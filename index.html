@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="bn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CalcMate Pro</title> <style>
+        :root{font-family:system-ui,Segoe UI,Roboto,"Noto Sans Bengali",sans-serif}
+        body{margin:0;background:#f7f8fb;color:#111}
+        header{background:#2f6fed;color:white;padding:14px 16px;font-size:20px; display: flex; flex-direction: column; align-items: flex-start; }
+        header .title-container { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+        header .author-name { font-size: 14px; align-self: flex-end; margin-top: 4px; }
+        .lang-switcher button { background: transparent; border: 1px solid white; color: white; padding: 5px 10px; cursor: pointer; border-radius: 4px; margin-left: 5px; }
+        .lang-switcher button.active { background: white; color: #2f6fed; }
+        .container{display:flex;gap:16px;padding:16px;flex-wrap:wrap}
+        nav{min-width:200px;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:12px; height: fit-content; }
+        nav button{display:block;width:100%;text-align:left;padding:10px;border:0;background:transparent;border-radius:6px;margin-bottom:6px;cursor:pointer}
+        nav button.active{background:#eef5ff}
+        main{flex:1;min-width:300px;background:#fff;border-radius:8px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+        .card{margin-bottom:12px}
+        label{display:block;margin:6px 0 4px;font-size:14px}
+        input,select{width:100%;padding:8px;border:1px solid #d7dce6;border-radius:6px;font-size:15px}
+        .row{display:flex;gap:8px}
+        .row > *{flex:1}
+        .btn{margin-top:10px;padding:10px 12px;border:0;background:#2f6fed;color:white;border-radius:6px;cursor:pointer}
+        .result{margin-top:10px;padding:12px;background:#f1f6ff;border-left:4px solid #2f6fed;border-radius:6px}
+        .small{font-size:13px;color:#555}
+        @media(max-width:720px){.container{flex-direction:column}nav{order:2}}
+        
+        /* Basic and Scientific Calculator Styles */
+        #basic-calculator, #scientific-calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+        #basic-calculator .display, #scientific-calculator .display {
+            grid-column: 1 / -1;
+            background: #eef5ff;
+            font-size: 2em;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: right;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        #basic-calculator button, #scientific-calculator button {
+            padding: 20px;
+            font-size: 1.2em;
+            background: #f7f8fb;
+            border: 1px solid #d7dce6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #basic-calculator button:hover, #scientific-calculator button:hover {
+            background: #e0e6f0;
+        }
+        #scientific-calculator button.wide {
+            grid-column: span 2;
+        }
+        #basic-calculator button.operator, #scientific-calculator button.operator {
+            background: #2f6fed;
+            color: white;
+            font-weight: bold;
+        }
+        #basic-calculator button.equal, #scientific-calculator button.equal {
+            background: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+        #basic-calculator button.clear, #scientific-calculator button.clear {
+            background: #dc3545;
+            color: white;
+            font-weight: bold;
+        }
+        #scientific-calculator button.fn {
+            background: #ffc107;
+            color: #333;
+        }
+        .two-column-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <span id="main-header">CalcMate Pro</span> <div class="lang-switcher">
+                <button data-lang="en" class="active">English</button>
+                <button data-lang="bn">বাংলা</button>
+            </div>
+        </div>
+        <span class="author-name">© 2025 — Created by Soumya Koley</span>
+    </header>
+    <div class="container">
+        <nav id="menu">
+            <button data-cal="basic" class="active" data-text-key="basic_btn">Basic Calculator</button>
+            <button data-cal="scientific" data-text-key="scientific_btn">Scientific Calculator</button>
+            <button data-cal="emi" data-text-key="emi_btn">EMI Calculator</button>
+            <button data-cal="bmi" data-text-key="bmi_btn">BMI</button>
+            <button data-cal="bmr" data-text-key="bmr_btn">BMR</button>
+            <button data-cal="age" data-text-key="age_btn">Age Calculator</button>
+            <button data-cal="gst" data-text-key="gst_btn">GST/VAT Calculator</button>
+            <button data-cal="discount" data-text-key="discount_btn">Discount</button>
+            <button data-cal="simple-interest" data-text-key="si_btn">Simple Interest</button>
+            <button data-cal="tip" data-text-key="tip_btn">Tip Calculator</button>
+            <button data-cal="temp" data-text-key="temp_btn">Temperature</button>
+            <button data-cal="length" data-text-key="length_btn">Length</button>
+            <button data-cal="area" data-text-key="area_btn">Area</button>
+            <button data-cal="volume" data-text-key="volume_btn">Volume</button>
+            <button data-cal="mass" data-text-key="mass_btn">Mass</button>
+            <button data-cal="speed" data-text-key="speed_btn">Speed</button>
+            <button data-cal="data" data-text-key="data_btn">Data Size</button>
+        </nav>
+        <main id="main"></main>
+    </div>
+
+    <footer style="text-align: center; padding: 16px; font-size: 14px; color: #555;">
+        <p>© 2025 Soumya Koley. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                header: "CalcMate Pro", // এখানেও নাম পরিবর্তন করা হয়েছে
+                basic_btn: "Basic Calculator",
+                scientific_btn: "Scientific Calculator",
+                emi_btn: "EMI Calculator",
+                bmi_btn: "BMI",
+                bmr_btn: "BMR",
+                age_btn: "Age Calculator",
+                gst_btn: "GST/VAT Calculator",
+                discount_btn: "Discount",
+                si_btn: "Simple Interest",
+                tip_btn: "Tip Calculator",
+                temp_btn: "Temperature",
+                length_btn: "Length",
+                area_btn: "Area",
+                volume_btn: "Volume",
+                mass_btn: "Mass",
+                speed_btn: "Speed",
+                data_btn: "Data Size",
+
+                emi_title: "EMI Calculator",
+                emi_principal: "Principal Amount",
+                emi_principal_ph: "e.g., 500000",
+                emi_rate: "Annual Interest Rate (%)",
+                emi_rate_ph: "e.g., 7.5",
+                emi_tenure: "Tenure (months)",
+                emi_tenure_ph: "e.g., 60",
+                emi_calc_btn: "Calculate",
+                emi_err: "Please enter all inputs correctly",
+                emi_monthly: "Monthly EMI:",
+                emi_total: "Total Payable:",
+                emi_interest: "Total Interest:",
+
+                bmi_title: "BMI Calculator",
+                bmi_weight: "Weight (kg)",
+                bmi_weight_ph: "68",
+                bmi_height: "Height (cm)",
+                bmi_height_ph: "170",
+                bmi_calc_btn: "Calculate",
+                bmi_err: "Please fill in all inputs",
+                bmi_underweight: "Underweight",
+                bmi_normal: "Normal",
+                bmi_overweight: "Overweight",
+                bmi_obese: "Obese",
+
+                bmr_title: "BMR Calculator",
+                bmr_weight: "Weight (kg)",
+                bmr_height: "Height (cm)",
+                bmr_age: "Age",
+                bmr_gender: "Gender",
+                bmr_male: "Male",
+                bmr_female: "Female",
+                bmr_calc_btn: "Calculate",
+                bmr_err: "Please enter all inputs correctly",
+                bmr_result: "Your BMR is:",
+
+                age_title: "Age Calculator",
+                age_dob: "Date of Birth",
+                age_today: "Today's Date",
+                age_calc_btn: "Calculate",
+                age_err: "Please enter a valid date",
+                age_result: "You are {years} years, {months} months, and {days} days old.",
+
+                gst_title: "GST/VAT Calculator",
+                gst_amount: "Amount",
+                gst_rate: "GST/VAT Rate (%)",
+                gst_add: "Add GST/VAT",
+                gst_remove: "Remove GST/VAT",
+                gst_calc_btn: "Calculate",
+                gst_err: "Please enter a valid amount and rate",
+                gst_net: "Net Amount:",
+                gst_total: "Total Amount:",
+                gst_gst_amount: "GST/VAT Amount:",
+
+                discount_title: "Discount Calculator",
+                discount_price: "Original Price",
+                discount_percent: "Discount (%)",
+                discount_percent_ph: "15",
+                discount_calc_btn: "Calculate",
+                discount_err: "Please enter correct inputs",
+                discount_final: "Final Price after Discount:",
+                discount_amount: "Discount Amount:",
+
+                si_title: "Simple Interest Calculator",
+                si_principal: "Principal Amount",
+                si_rate: "Annual Interest Rate (%)",
+                si_time: "Time (Years)",
+                si_calc_btn: "Calculate",
+                si_err: "Please enter all inputs correctly",
+                si_interest: "Total Interest:",
+                si_total: "Total Amount:",
+
+                tip_title: "Tip Calculator",
+                tip_bill: "Bill Amount",
+                tip_tip_per: "Tip Percentage (%)",
+                tip_split: "Split Bill with (No. of people)",
+                tip_calc_btn: "Calculate",
+                tip_err: "Please enter correct inputs",
+                tip_amount: "Tip Amount:",
+                tip_total_bill: "Total Bill (with tip):",
+                tip_per_person: "Amount Per Person:",
+
+                conv_val: "Value",
+                conv_from: "From",
+                conv_to: "To",
+                conv_calc_btn: "Convert",
+                conv_err: "Please enter a value",
+            },
+            bn: {
+                header: "ক্যালকমেট প্রো", // এখানেও নাম পরিবর্তন করা হয়েছে
+                basic_btn: "সাধারণ ক্যালকুলেটর",
+                scientific_btn: "বৈজ্ঞানিক ক্যালকুলেটর",
+                emi_btn: "ইএমআই ক্যালকুলেটর",
+                bmi_btn: "বিএমআই",
+                bmr_btn: "বিএমআর",
+                age_btn: "বয়স ক্যালকুলেটর",
+                gst_btn: "জিএসটি/ভ্যাট ক্যালকুলেটর",
+                discount_btn: "ডিসকাউন্ট",
+                si_btn: "সাধারণ সুদ",
+                tip_btn: "টিপ ক্যালকুলেটর",
+                temp_btn: "তাপমাত্রা",
+                length_btn: "দৈর্ঘ্য",
+                area_btn: "ক্ষেত্রফল",
+                volume_btn: "আয়তন",
+                mass_btn: "ওজন",
+                speed_btn: "গতি",
+                data_btn: "ডেটা সাইজ",
+
+                emi_title: "ইএমআই ক্যালকুলেটর",
+                emi_principal: "প্রধান পরিমান",
+                emi_principal_ph: "উদাহরণ: 500000",
+                emi_rate: "বার্ষিক সুদ (%)",
+                emi_rate_ph: "উদাহরণ: 7.5",
+                emi_tenure: "সময়কাল (মাস)",
+                emi_tenure_ph: "উদাহরণ: 60",
+                emi_calc_btn: "হিসাব করুন",
+                emi_err: "সব ইনপুট সঠিকভাবে দিন",
+                emi_monthly: "মাসিক EMI:",
+                emi_total: "মোট প্রদানযোগ্য:",
+                emi_interest: "মোট সুদ:",
+
+                bmi_title: "বিএমআই ক্যালকুলেটর",
+                bmi_weight: "ওজন (কেজি)",
+                bmi_weight_ph: "68",
+                bmi_height: "উচ্চতা (সেমি)",
+                bmi_height_ph: "170",
+                bmi_calc_btn: "হিসাব করুন",
+                bmi_err: "সব ইনপুট পূরণ করুন",
+                bmi_underweight: "ওজন কম",
+                bmi_normal: "স্বাভাবিক",
+                bmi_overweight: "ওজন বেশি",
+                bmi_obese: "অতিরিক্ত মোটা",
+
+                bmr_title: "বিএমআর ক্যালকুলেটর",
+                bmr_weight: "ওজন (কেজি)",
+                bmr_height: "উচ্চতা (সেমি)",
+                bmr_age: "বয়স",
+                bmr_gender: "লিঙ্গ",
+                bmr_male: "পুরুষ",
+                bmr_female: "মহিলা",
+                bmr_calc_btn: "হিসাব করুন",
+                bmr_err: "সব ইনপুট সঠিকভাবে দিন",
+                bmr_result: "আপনার BMR হল:",
+
+                age_title: "বয়স ক্যালকুলেটর",
+                age_dob: "জন্ম তারিখ",
+                age_today: "আজকের তারিখ",
+                age_calc_btn: "হিসাব করুন",
+                age_err: "একটি সঠিক তারিখ দিন",
+                age_result: "আপনার বয়স {years} বছর, {months} মাস, এবং {days} দিন।",
+
+                gst_title: "জিএসটি/ভ্যাট ক্যালকুলেটর",
+                gst_amount: "পরিমাণ",
+                gst_rate: "জিএসটি/ভ্যাট হার (%)",
+                gst_add: "জিএসটি/ভ্যাট যোগ করুন",
+                gst_remove: "জিএসটি/ভ্যাট বাদ দিন",
+                gst_calc_btn: "হিসাব করুন",
+                gst_err: "একটি সঠিক পরিমাণ এবং হার দিন",
+                gst_net: "মোট পরিমাণ (নেট):",
+                gst_total: "মোট পরিমাণ (টোটাল):",
+                gst_gst_amount: "জিএসটি/ভ্যাট পরিমাণ:",
+
+                discount_title: "ডিসকাউন্ট ক্যালকুলেটর",
+                discount_price: "মূল্য",
+                discount_percent: "ছাড় (%)",
+                discount_percent_ph: "15",
+                discount_calc_btn: "হিসাব করুন",
+                discount_err: "সঠিক ইনপুট দিন",
+                discount_final: "ছাড়ের পর মূল্য:",
+                discount_amount: "ডিসকাউন্ট:",
+
+                si_title: "সাধারণ সুদ ক্যালকুলেটর",
+                si_principal: "মূল টাকা",
+                si_rate: "বার্ষিক সুদের হার (%)",
+                si_time: "সময় (বছর)",
+                si_calc_btn: "হিসাব করুন",
+                si_err: "সব ইনপুট সঠিকভাবে দিন",
+                si_interest: "মোট সুদ:",
+                si_total: "মোট পরিমাণ:",
+
+                tip_title: "টিপ ক্যালকুলেটর",
+                tip_bill: "মোট বিল",
+                tip_tip_per: "টিপের শতাংশ (%)",
+                tip_split: "বিল ভাগ করুন (সংখ্যা)",
+                tip_calc_btn: "হিসাব করুন",
+                tip_err: "সঠিক ইনপুট দিন",
+                tip_amount: "টিপের পরিমাণ:",
+                tip_total_bill: "মোট বিল (টিপ সহ):",
+                tip_per_person: "প্রতিজনের পরিমাণ:",
+
+                conv_val: "মান",
+                conv_from: "থেকে",
+                conv_to: "পর্যন্ত",
+                conv_calc_btn: "রূপান্তর করুন",
+                conv_err: "একটি মান দিন",
+            }
+        };
+
+        const toNum = v => {
+            const n = parseFloat(String(v).replace(/,/g, ''));
+            return Number.isFinite(n) ? n : NaN;
+        };
+
+        const menu = document.getElementById('menu');
+        const main = document.getElementById('main');
+        const langButtons = document.querySelectorAll('.lang-switcher button');
+        const headerTitle = document.getElementById('main-header');
+
+        function updateText() {
+            const lang = translations[currentLang];
+            if (!lang) return;
+
+            headerTitle.textContent = lang.header;
+
+            menu.querySelectorAll('button').forEach(btn => {
+                const key = btn.getAttribute('data-text-key');
+                if (key && lang[key]) {
+                    btn.textContent = lang[key];
+                }
+            });
+
+            const activeCal = menu.querySelector('button.active').dataset.cal;
+            render(activeCal);
+        }
+
+        const templates = {
+            basic: () => {
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${translations[currentLang].basic_btn}</h2>
+                    <div id="basic-calculator">
+                        <div class="display">0</div>
+                        <button class="clear">AC</button>
+                        <button class="clear-one">C</button>
+                        <button class="operator">%</button>
+                        <button class="operator">/</button>
+                        <button>7</button><button>8</button><button>9</button><button class="operator">*</button>
+                        <button>4</button><button>5</button><button>6</button><button class="operator">-</button>
+                        <button>1</button><button>2</button><button>3</button><button class="operator">+</button>
+                        <button style="grid-column: span 2;">0</button><button>.</button><button class="equal">=</button>
+                    </div>
+                `;
+                const display = el.querySelector('.display');
+                let currentInput = '0';
+                let firstOperand = null;
+                let operator = null;
+                let waitingForSecondOperand = false;
+
+                function updateDisplay(value) {
+                    display.textContent = value;
+                }
+                updateDisplay(currentInput);
+
+                el.addEventListener('click', (event) => {
+                    const target = event.target;
+                    if (!target.matches('button')) return;
+
+                    const value = target.textContent;
+                    
+                    if (target.classList.contains('clear')) {
+                        currentInput = '0';
+                        firstOperand = null;
+                        operator = null;
+                        waitingForSecondOperand = false;
+                        updateDisplay(currentInput);
+                        return;
+                    }
+                    if (target.classList.contains('clear-one')) {
+                        currentInput = currentInput.slice(0, -1) || '0';
+                        updateDisplay(currentInput);
+                        return;
+                    }
+
+                    if (target.classList.contains('operator')) {
+                        handleOperator(target.textContent);
+                        return;
+                    }
+                    if (target.classList.contains('equal')) {
+                        handleOperator('=');
+                        return;
+                    }
+
+                    if (waitingForSecondOperand) {
+                        currentInput = value;
+                        waitingForSecondOperand = false;
+                    } else {
+                        currentInput = currentInput === '0' ? value : currentInput + value;
+                    }
+                    updateDisplay(currentInput);
+                });
+
+                function handleOperator(nextOperator) {
+                    const inputValue = parseFloat(currentInput);
+                    
+                    if (operator && waitingForSecondOperand) {
+                        operator = nextOperator;
+                        updateDisplay(String(firstOperand) + ' ' + nextOperator);
+                        return;
+                    }
+                    if (firstOperand === null) {
+                        firstOperand = inputValue;
+                    } else if (operator) {
+                        const result = performCalculation(firstOperand, inputValue, operator);
+                        currentInput = String(result);
+                        firstOperand = result;
+                    }
+                    
+                    waitingForSecondOperand = true;
+                    if (nextOperator !== '=') {
+                        operator = nextOperator;
+                        updateDisplay(String(firstOperand) + ' ' + nextOperator);
+                    } else {
+                        operator = null;
+                        updateDisplay(currentInput);
+                    }
+                }
+
+                function performCalculation(first, second, op) {
+                    if (op === '+') return first + second;
+                    if (op === '-') return first - second;
+                    if (op === '*') return first * second;
+                    if (op === '/') return first / second;
+                    if (op === '%') return first / 100 * second;
+                    return second;
+                }
+
+                return el;
+            },
+
+            scientific: () => {
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${translations[currentLang].scientific_btn}</h2>
+                    <div id="scientific-calculator">
+                        <div class="display">0</div>
+                        <button class="clear">AC</button>
+                        <button class="clear-one">C</button>
+                        <button class="fn">^</button>
+                        <button class="operator">/</button>
+
+                        <button class="fn">sin</button><button class="fn">cos</button><button class="fn">tan</button><button class="operator">*</button>
+                        <button class="fn">√</button><button class="fn">log</button><button>E</button><button class="operator">-</button>
+                        <button>7</button><button>8</button><button>9</button><button class="operator">+</button>
+                        <button>4</button><button>5</button><button>6</button><button>.</button>
+                        <button>1</button><button>2</button><button>3</button><button class="equal" style="grid-row: span 2;">=</button>
+                        <button class="wide">0</button><button>(</button><button>)</button>
+                    </div>
+                `;
+                const display = el.querySelector('.display');
+                let expression = '';
+
+                function updateDisplay(value) {
+                    display.textContent = value || '0';
+                }
+                updateDisplay(expression);
+
+                el.addEventListener('click', (event) => {
+                    const target = event.target;
+                    if (!target.matches('button')) return;
+
+                    const value = target.textContent;
+                    
+                    if (value === 'AC') {
+                        expression = '';
+                    } else if (value === 'C') {
+                        expression = expression.slice(0, -1);
+                    } else if (value === '=') {
+                        try {
+                            const result = eval(expression.replace('^', '**').replace('√', 'Math.sqrt').replace('log', 'Math.log10').replace('sin', 'Math.sin').replace('cos', 'Math.cos').replace('tan', 'Math.tan').replace('E', 'Math.E'));
+                            expression = String(result);
+                        } catch (e) {
+                            expression = 'Error';
+                        }
+                    } else {
+                        expression += value;
+                    }
+                    updateDisplay(expression);
+                });
+                return el;
+            },
+
+            emi: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.emi_title}</h2>
+                    <div class="card">
+                        <label>${lang.emi_principal}</label>
+                        <input id="emi-principal" placeholder="${lang.emi_principal_ph}" />
+                    </div>
+                    <div class="row card">
+                        <div>
+                            <label>${lang.emi_rate}</label>
+                            <input id="emi-rate" placeholder="${lang.emi_rate_ph}" />
+                        </div>
+                        <div>
+                            <label>${lang.emi_tenure}</label>
+                            <input id="emi-tenure" placeholder="${lang.emi_tenure_ph}" />
+                        </div>
+                    </div>
+                    <button id="emi-calc" class="btn">${lang.emi_calc_btn}</button>
+                    <div id="emi-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#emi-calc').addEventListener('click', () => {
+                    const P = toNum(el.querySelector('#emi-principal').value);
+                    const annualRate = toNum(el.querySelector('#emi-rate').value);
+                    const n = Math.floor(toNum(el.querySelector('#emi-tenure').value));
+                    if (!P || !annualRate || !n || n<=0) {
+                        showResult('emi-result', lang.emi_err);
+                        return;
+                    }
+                    const r = annualRate/100/12;
+                    const factor = Math.pow(1+r, n);
+                    const E = P * r * factor / (factor - 1);
+                    const total = E * n;
+                    const interest = total - P;
+                    showResult('emi-result', `
+                        ${lang.emi_monthly} ₹${E.toFixed(2)}<br>
+                        ${lang.emi_total} ₹${total.toFixed(2)}<br>
+                        ${lang.emi_interest} ₹${interest.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+
+            bmi: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.bmi_title}</h2>
+                    <div class="row card">
+                        <div>
+                            <label>${lang.bmi_weight}</label>
+                            <input id="bmi-weight" placeholder="${lang.bmi_weight_ph}" />
+                        </div>
+                        <div>
+                            <label>${lang.bmi_height}</label>
+                            <input id="bmi-height" placeholder="${lang.bmi_height_ph}" />
+                        </div>
+                    </div>
+                    <button id="bmi-calc" class="btn">${lang.bmi_calc_btn}</button>
+                    <div id="bmi-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#bmi-calc').addEventListener('click', () => {
+                    const kg = toNum(el.querySelector('#bmi-weight').value);
+                    const cm = toNum(el.querySelector('#bmi-height').value);
+                    if (!kg || !cm) { showResult('bmi-result', lang.bmi_err); return; }
+                    const m = cm/100;
+                    const bmi = kg / (m*m);
+                    let cat = '';
+                    if (bmi < 18.5) cat = lang.bmi_underweight;
+                    else if (bmi < 25) cat = lang.bmi_normal;
+                    else if (bmi < 30) cat = lang.bmi_overweight;
+                    else cat = lang.bmi_obese;
+                    showResult('bmi-result', `BMI = ${bmi.toFixed(2)} — ${cat}`);
+                });
+                return el;
+            },
+
+            bmr: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.bmr_title}</h2>
+                    <div class="card"><label>${lang.bmr_weight}</label><input id="bmr-weight" type="number" /></div>
+                    <div class="card"><label>${lang.bmr_height}</label><input id="bmr-height" type="number" /></div>
+                    <div class="card"><label>${lang.bmr_age}</label><input id="bmr-age" type="number" /></div>
+                    <div class="card">
+                        <label>${lang.bmr_gender}</label>
+                        <select id="bmr-gender">
+                            <option value="male">${lang.bmr_male}</option>
+                            <option value="female">${lang.bmr_female}</option>
+                        </select>
+                    </div>
+                    <button id="bmr-calc" class="btn">${lang.bmr_calc_btn}</button>
+                    <div id="bmr-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#bmr-calc').addEventListener('click', () => {
+                    const weight = toNum(el.querySelector('#bmr-weight').value);
+                    const height = toNum(el.querySelector('#bmr-height').value);
+                    const age = toNum(el.querySelector('#bmr-age').value);
+                    const gender = el.querySelector('#bmr-gender').value;
+
+                    if (!weight || !height || !age) {
+                        showResult('bmr-result', lang.bmr_err);
+                        return;
+                    }
+                    
+                    let bmr;
+                    if (gender === 'male') {
+                        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+                    } else {
+                        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+                    }
+
+                    showResult('bmr-result', `${lang.bmr_result} ${bmr.toFixed(2)}`);
+                });
+                return el;
+            },
+
+            age: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.age_title}</h2>
+                    <div class="card"><label>${lang.age_dob}</label><input id="age-dob" type="date" /></div>
+                    <div class="card"><label>${lang.age_today}</label><input id="age-today" type="date" /></div>
+                    <button id="age-calc" class="btn">${lang.age_calc_btn}</button>
+                    <div id="age-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#age-calc').addEventListener('click', () => {
+                    const dob = el.querySelector('#age-dob').value;
+                    const today = el.querySelector('#age-today').value;
+                    if (!dob || !today) {
+                        showResult('age-result', lang.age_err);
+                        return;
+                    }
+                    const dobDate = new Date(dob);
+                    const todayDate = new Date(today);
+                    if (dobDate > todayDate) {
+                        showResult('age-result', lang.age_err);
+                        return;
+                    }
+
+                    const diff = todayDate - dobDate;
+                    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const years = Math.floor(totalDays / 365.25);
+                    const remainingDaysAfterYears = totalDays % 365.25;
+                    const months = Math.floor(remainingDaysAfterYears / 30.4375);
+                    const days = Math.floor(remainingDaysAfterYears % 30.4375);
+
+                    const result = lang.age_result.replace('{years}', years).replace('{months}', months).replace('{days}', days);
+                    showResult('age-result', result);
+                });
+                el.querySelector('#age-today').valueAsDate = new Date();
+                return el;
+            },
+
+            gst: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.gst_title}</h2>
+                    <div class="card"><label>${lang.gst_amount}</label><input id="gst-amount" type="number" /></div>
+                    <div class="card"><label>${lang.gst_rate}</label><input id="gst-rate" type="number" /></div>
+                    <div class="card">
+                        <label>Action</label>
+                        <select id="gst-action">
+                            <option value="add">${lang.gst_add}</option>
+                            <option value="remove">${lang.gst_remove}</option>
+                        </select>
+                    </div>
+                    <button id="gst-calc" class="btn">${lang.gst_calc_btn}</button>
+                    <div id="gst-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#gst-calc').addEventListener('click', () => {
+                    const amount = toNum(el.querySelector('#gst-amount').value);
+                    const rate = toNum(el.querySelector('#gst-rate').value);
+                    const action = el.querySelector('#gst-action').value;
+                    if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
+                        showResult('gst-result', lang.gst_err);
+                        return;
+                    }
+
+                    let gstAmount, totalAmount, netAmount;
+                    if (action === 'add') {
+                        gstAmount = amount * (rate / 100);
+                        totalAmount = amount + gstAmount;
+                        netAmount = amount;
+                    } else { // remove
+                        gstAmount = amount - (amount / (1 + rate / 100));
+                        netAmount = amount - gstAmount;
+                        totalAmount = amount;
+                    }
+
+                    showResult('gst-result', `
+                        ${lang.gst_gst_amount} ₹${gstAmount.toFixed(2)}<br>
+                        ${lang.gst_net} ₹${netAmount.toFixed(2)}<br>
+                        ${lang.gst_total} ₹${totalAmount.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+
+            discount: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.discount_title}</h2>
+                    <div class="card"><label>${lang.discount_price}</label><input id="discount-price" type="number" /></div>
+                    <div class="card"><label>${lang.discount_percent}</label><input id="discount-percent" placeholder="${lang.discount_percent_ph}" type="number" /></div>
+                    <button id="discount-calc" class="btn">${lang.discount_calc_btn}</button>
+                    <div id="discount-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#discount-calc').addEventListener('click', () => {
+                    const price = toNum(el.querySelector('#discount-price').value);
+                    const percent = toNum(el.querySelector('#discount-percent').value);
+                    if (isNaN(price) || isNaN(percent)) {
+                        showResult('discount-result', lang.discount_err);
+                        return;
+                    }
+
+                    const discountAmount = price * (percent / 100);
+                    const finalPrice = price - discountAmount;
+                    showResult('discount-result', `
+                        ${lang.discount_amount} ₹${discountAmount.toFixed(2)}<br>
+                        ${lang.discount_final} ₹${finalPrice.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+
+            'simple-interest': () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.si_title}</h2>
+                    <div class="card"><label>${lang.si_principal}</label><input id="si-principal" type="number" /></div>
+                    <div class="card"><label>${lang.si_rate}</label><input id="si-rate" type="number" /></div>
+                    <div class="card"><label>${lang.si_time}</label><input id="si-time" type="number" /></div>
+                    <button id="si-calc" class="btn">${lang.si_calc_btn}</button>
+                    <div id="si-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#si-calc').addEventListener('click', () => {
+                    const principal = toNum(el.querySelector('#si-principal').value);
+                    const rate = toNum(el.querySelector('#si-rate').value);
+                    const time = toNum(el.querySelector('#si-time').value);
+                    if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+                        showResult('si-result', lang.si_err);
+                        return;
+                    }
+
+                    const interest = (principal * rate * time) / 100;
+                    const totalAmount = principal + interest;
+                    showResult('si-result', `
+                        ${lang.si_interest} ₹${interest.toFixed(2)}<br>
+                        ${lang.si_total} ₹${totalAmount.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+            
+            tip: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.tip_title}</h2>
+                    <div class="card"><label>${lang.tip_bill}</label><input id="tip-bill" type="number" /></div>
+                    <div class="card"><label>${lang.tip_tip_per}</label><input id="tip-percent" type="number" /></div>
+                    <div class="card"><label>${lang.tip_split}</label><input id="tip-split" type="number" value="1" min="1" /></div>
+                    <button id="tip-calc" class="btn">${lang.tip_calc_btn}</button>
+                    <div id="tip-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#tip-calc').addEventListener('click', () => {
+                    const bill = toNum(el.querySelector('#tip-bill').value);
+                    const tipPercent = toNum(el.querySelector('#tip-percent').value);
+                    const split = toNum(el.querySelector('#tip-split').value);
+                    if (isNaN(bill) || isNaN(tipPercent) || isNaN(split) || split < 1) {
+                        showResult('tip-result', lang.tip_err);
+                        return;
+                    }
+
+                    const tipAmount = bill * (tipPercent / 100);
+                    const totalBill = bill + tipAmount;
+                    const perPerson = totalBill / split;
+                    showResult('tip-result', `
+                        ${lang.tip_amount} ₹${tipAmount.toFixed(2)}<br>
+                        ${lang.tip_total_bill} ₹${totalBill.toFixed(2)}<br>
+                        ${lang.tip_per_person} ₹${perPerson.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+
+            temp: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.temp_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="temp-from">
+                                <option value="celsius">Celsius</option>
+                                <option value="fahrenheit">Fahrenheit</option>
+                                <option value="kelvin">Kelvin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="temp-to">
+                                <option value="fahrenheit">Fahrenheit</option>
+                                <option value="celsius">Celsius</option>
+                                <option value="kelvin">Kelvin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="temp-val" type="number" /></div>
+                    <button id="temp-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="temp-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#temp-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#temp-val').value);
+                    const from = el.querySelector('#temp-from').value;
+                    const to = el.querySelector('#temp-to').value;
+                    if (isNaN(val)) { showResult('temp-result', lang.conv_err); return; }
+
+                    let result;
+                    if (from === 'celsius' && to === 'fahrenheit') { result = (val * 9/5) + 32; }
+                    else if (from === 'celsius' && to === 'kelvin') { result = val + 273.15; }
+                    else if (from === 'fahrenheit' && to === 'celsius') { result = (val - 32) * 5/9; }
+                    else if (from === 'fahrenheit' && to === 'kelvin') { result = (val - 32) * 5/9 + 273.15; }
+                    else if (from === 'kelvin' && to === 'celsius') { result = val - 273.15; }
+                    else if (from === 'kelvin' && to === 'fahrenheit') { result = (val - 273.15) * 9/5 + 32; }
+                    else { result = val; }
+
+                    showResult('temp-result', `Result: ${result.toFixed(2)}`);
+                });
+                return el;
+            },
+
+            length: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.length_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="length-from">
+                                <option value="meter">Meter</option>
+                                <option value="kilometer">Kilometer</option>
+                                <option value="centimeter">Centimeter</option>
+                                <option value="mile">Mile</option>
+                                <option value="foot">Foot</option>
+                                <option value="inch">Inch</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="length-to">
+                                <option value="kilometer">Kilometer</option>
+                                <option value="meter">Meter</option>
+                                <option value="centimeter">Centimeter</option>
+                                <option value="mile">Mile</option>
+                                <option value="foot">Foot</option>
+                                <option value="inch">Inch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="length-val" type="number" /></div>
+                    <button id="length-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="length-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#length-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#length-val').value);
+                    const from = el.querySelector('#length-from').value;
+                    const to = el.querySelector('#length-to').value;
+                    if (isNaN(val)) { showResult('length-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        meter: 1,
+                        kilometer: 1000,
+                        centimeter: 0.01,
+                        mile: 1609.34,
+                        foot: 0.3048,
+                        inch: 0.0254
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('length-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+
+            area: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.area_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="area-from">
+                                <option value="sq_meter">Square Meter</option>
+                                <option value="sq_kilometer">Square Kilometer</option>
+                                <option value="sq_mile">Square Mile</option>
+                                <option value="acre">Acre</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="area-to">
+                                <option value="sq_kilometer">Square Kilometer</option>
+                                <option value="sq_meter">Square Meter</option>
+                                <option value="sq_mile">Square Mile</option>
+                                <option value="acre">Acre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="area-val" type="number" /></div>
+                    <button id="area-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="area-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#area-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#area-val').value);
+                    const from = el.querySelector('#area-from').value;
+                    const to = el.querySelector('#area-to').value;
+                    if (isNaN(val)) { showResult('area-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        sq_meter: 1,
+                        sq_kilometer: 1000000,
+                        sq_mile: 2589988.11,
+                        acre: 4046.86
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('area-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+
+            volume: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.volume_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="volume-from">
+                                <option value="liter">Liter</option>
+                                <option value="milliliter">Milliliter</option>
+                                <option value="cubic_meter">Cubic Meter</option>
+                                <option value="gallon">Gallon</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="volume-to">
+                                <option value="milliliter">Milliliter</option>
+                                <option value="liter">Liter</option>
+                                <option value="cubic_meter">Cubic Meter</option>
+                                <option value="gallon">Gallon</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="volume-val" type="number" /></div>
+                    <button id="volume-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="volume-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#volume-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#volume-val').value);
+                    const from = el.querySelector('#volume-from').value;
+                    const to = el.querySelector('#volume-to').value;
+                    if (isNaN(val)) { showResult('volume-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        liter: 1,
+                        milliliter: 0.001,
+                        cubic_meter: 1000,
+                        gallon: 3.78541
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('volume-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+
+            mass: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.mass_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="mass-from">
+                                <option value="gram">Gram</option>
+                                <option value="kilogram">Kilogram</option>
+                                <option value="pound">Pound</option>
+                                <option value="ounce">Ounce</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="mass-to">
+                                <option value="kilogram">Kilogram</option>
+                                <option value="gram">Gram</option>
+                                <option value="pound">Pound</option>
+                                <option value="ounce">Ounce</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="mass-val" type="number" /></div>
+                    <button id="mass-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="mass-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#mass-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#mass-val').value);
+                    const from = el.querySelector('#mass-from').value;
+                    const to = el.querySelector('#mass-to').value;
+                    if (isNaN(val)) { showResult('mass-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        gram: 1,
+                        kilogram: 1000,
+                        pound: 453.592,
+                        ounce: 28.3495
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('mass-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+            
+            speed: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.speed_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="speed-from">
+                                <option value="kmh">Kilometer/hour</option>
+                                <option value="mph">Mile/hour</option>
+                                <option value="mps">Meter/second</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="speed-to">
+                                <option value="mph">Mile/hour</option>
+                                <option value="kmh">Kilometer/hour</option>
+                                <option value="mps">Meter/second</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="speed-val" type="number" /></div>
+                    <button id="speed-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="speed-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#speed-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#speed-val').value);
+                    const from = el.querySelector('#speed-from').value;
+                    const to = el.querySelector('#speed-to').value;
+                    if (isNaN(val)) { showResult('speed-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        kmh: 1,
+                        mph: 1.60934,
+                        mps: 3.6
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('speed-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+
+            data: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.data_btn}</h2>
+                    <div class="card two-column-card">
+                        <div>
+                            <label>${lang.conv_from}</label>
+                            <select id="data-from">
+                                <option value="byte">Byte</option>
+                                <option value="kilobyte">Kilobyte</option>
+                                <option value="megabyte">Megabyte</option>
+                                <option value="gigabyte">Gigabyte</option>
+                                <option value="terabyte">Terabyte</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>${lang.conv_to}</label>
+                            <select id="data-to">
+                                <option value="megabyte">Megabyte</option>
+                                <option value="gigabyte">Gigabyte</option>
+                                <option value="terabyte">Terabyte</option>
+                                <option value="byte">Byte</option>
+                                <option value="kilobyte">Kilobyte</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card"><label>${lang.conv_val}</label><input id="data-val" type="number" /></div>
+                    <button id="data-calc" class="btn">${lang.conv_calc_btn}</button>
+                    <div id="data-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#data-calc').addEventListener('click', () => {
+                    const val = toNum(el.querySelector('#data-val').value);
+                    const from = el.querySelector('#data-from').value;
+                    const to = el.querySelector('#data-to').value;
+                    if (isNaN(val)) { showResult('data-result', lang.conv_err); return; }
+                    
+                    const factors = {
+                        byte: 1,
+                        kilobyte: 1024,
+                        megabyte: 1024 * 1024,
+                        gigabyte: 1024 * 1024 * 1024,
+                        terabyte: 1024 * 1024 * 1024 * 1024
+                    };
+                    const result = val * factors[from] / factors[to];
+                    showResult('data-result', `Result: ${result.toFixed(4)}`);
+                });
+                return el;
+            },
+        };
+
+        function render(cal) {
+            const temp = templates[cal];
+            if (temp) {
+                main.innerHTML = '';
+                main.appendChild(temp());
+            }
+        }
+
+        function showResult(id, html) {
+            const res = document.getElementById(id);
+            if (res) {
+                res.style.display = 'block';
+                res.innerHTML = html;
+            }
+        }
+
+        menu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const current = menu.querySelector('.active');
+                if (current) current.classList.remove('active');
+                e.target.classList.add('active');
+                render(e.target.dataset.cal);
+            }
+        });
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentLang = button.dataset.lang;
+                updateText();
+            });
+        });
+
+        // Initial render
+        updateText();
+    </script>
+</body>
+</html>
