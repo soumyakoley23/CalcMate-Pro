@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>CalcMate Pro</title> <style>
+    <title>CalcMate Pro</title>
+    <style>
         :root{font-family:system-ui,Segoe UI,Roboto,"Noto Sans Bengali",sans-serif}
         body{margin:0;background:#f7f8fb;color:#111}
         header{background:#2f6fed;color:white;padding:14px 16px;font-size:20px; display: flex; flex-direction: column; align-items: flex-start; }
@@ -91,7 +92,8 @@
 <body>
     <header>
         <div class="title-container">
-            <span id="main-header">CalcMate Pro</span> <div class="lang-switcher">
+            <span id="main-header">CalcMate Pro</span>
+            <div class="lang-switcher">
                 <button data-lang="en" class="active">English</button>
                 <button data-lang="bn">বাংলা</button>
             </div>
@@ -122,7 +124,7 @@
     </div>
 
     <footer style="text-align: center; padding: 16px; font-size: 14px; color: #555;">
-        <p>© 2025 Soumya Koley. All Rights Reserved.</p>
+        <p>© 2025 Soumya Koley. All Rights Reserved. <a href="privacy.html" style="margin-left: 10px;">Privacy Policy</a></p>
     </footer>
 
     <script>
@@ -130,7 +132,7 @@
 
         const translations = {
             en: {
-                header: "CalcMate Pro", // এখানেও নাম পরিবর্তন করা হয়েছে
+                header: "CalcMate Pro",
                 basic_btn: "Basic Calculator",
                 scientific_btn: "Scientific Calculator",
                 emi_btn: "EMI Calculator",
@@ -148,6 +150,23 @@
                 mass_btn: "Mass",
                 speed_btn: "Speed",
                 data_btn: "Data Size",
+
+                // Calculator Descriptions
+                emi_desc: "Use this calculator to find out your monthly EMI, total interest, and total payable amount for a loan.",
+                bmi_desc: "Find your Body Mass Index (BMI) quickly and easily.",
+                bmr_desc: "Calculate your Basal Metabolic Rate (BMR) to understand your daily calorie needs.",
+                age_desc: "This calculator helps you to find your age in years, months, and days from a given date.",
+                gst_desc: "Add or remove GST/VAT from a base amount to find the gross or net price.",
+                discount_desc: "Calculate the final price and discount amount for a product.",
+                si_desc: "Calculate the simple interest and total amount for a loan.",
+                tip_desc: "Calculate the tip amount and total bill, with an option to split among multiple people.",
+                temp_desc: "Convert temperature values between Celsius, Fahrenheit, and Kelvin.",
+                length_desc: "Convert length values between various units like meters, feet, inches, and more.",
+                area_desc: "Convert area values between square meters, square feet, acres, and other units.",
+                volume_desc: "Convert volume values between cubic meters, liters, gallons, and other units.",
+                mass_desc: "Convert mass values between kilograms, pounds, grams, and other units.",
+                speed_desc: "Convert speed values between kilometers per hour, miles per hour, and meters per second.",
+                data_desc: "Convert digital data sizes between bits, bytes, kilobytes, and more.",
 
                 emi_title: "EMI Calculator",
                 emi_principal: "Principal Amount",
@@ -238,7 +257,7 @@
                 conv_err: "Please enter a value",
             },
             bn: {
-                header: "ক্যালকমেট প্রো", // এখানেও নাম পরিবর্তন করা হয়েছে
+                header: "ক্যালকমেট প্রো",
                 basic_btn: "সাধারণ ক্যালকুলেটর",
                 scientific_btn: "বৈজ্ঞানিক ক্যালকুলেটর",
                 emi_btn: "ইএমআই ক্যালকুলেটর",
@@ -256,6 +275,25 @@
                 mass_btn: "ওজন",
                 speed_btn: "গতি",
                 data_btn: "ডেটা সাইজ",
+                
+                // Calculator Descriptions
+                basic_desc: "যোগ,বিয়োগ,গুণ এবং ভাগের মতো মৌলিক গাণিতিক ক্রিয়াকলাপ সম্পাদন করুন।",
+                Scientific_desc: "ত্রিকোণমিতি, লগারিদম এবং আরও অনেক কিছুর মতো বৈজ্ঞানিক ফাংশন সহ একটি শক্তিশালী ক্যালকুলেটর।",
+                emi_desc: "এই ক্যালকুলেটরটি ব্যবহার করে আপনার ঋণের মাসিক EMI, মোট সুদ, এবং মোট প্রদেয় পরিমাণ নির্ণয় করুন।",
+                bmi_desc: "আপনার বডি মাস ইনডেক্স (BMI) সহজে এবং দ্রুত নির্ণয় করুন।",
+                bmr_desc: "আপনার দৈনিক ক্যালরির চাহিদা বোঝার জন্য বেসাল মেটাবলিক রেট (BMR) গণনা করুন।",
+                age_desc: "এই ক্যালকুলেটরটি আপনাকে একটি নির্দিষ্ট তারিখ থেকে আপনার বয়স বছর, মাস এবং দিনে খুঁজে বের করতে সাহায্য করে।",
+                gst_desc: "মোট বা নেট মূল্য খুঁজে পেতে একটি মূল পরিমাণের সাথে GST/VAT যোগ বা বিয়োগ করুন।",
+                discount_desc: "একটি পণ্যের চূড়ান্ত মূল্য এবং ছাড়ের পরিমাণ গণনা করুন।",
+                si_desc: "একটি ঋণের জন্য সাধারণ সুদ এবং মোট পরিমাণ গণনা করুন।",
+                tip_desc: "টিপের পরিমাণ এবং মোট বিল গণনা করুন, একাধিক মানুষের মধ্যে ভাগ করার বিকল্প সহ।",
+                temp_desc: "সেলসিয়াস, ফারেনহাইট এবং কেলভিনের মধ্যে তাপমাত্রা রূপান্তর করুন।",
+                length_desc: "মিটার, ফুট, ইঞ্চি এবং অন্যান্য ইউনিটের মধ্যে দৈর্ঘ্যের মান রূপান্তর করুন।",
+                area_desc: "বর্গ মিটার, বর্গ ফুট, একর এবং অন্যান্য ইউনিটের মধ্যে ক্ষেত্রফলের মান রূপান্তর করুন।",
+                volume_desc: "ঘন মিটার, লিটার, গ্যালন এবং অন্যান্য ইউনিটের মধ্যে আয়তনের মান রূপান্তর করুন।",
+                mass_desc: "কিলোগ্রাম, পাউন্ড, গ্রাম এবং অন্যান্য ইউনিটের মধ্যে ওজনের মান রূপান্তর করুন।",
+                speed_desc: "কিলোমিটার প্রতি ঘন্টা, মাইল প্রতি ঘন্টা এবং মিটার প্রতি সেকেন্ডের মধ্যে গতির মান রূপান্তর করুন।",
+                data_desc: "বিট, বাইট, কিলোবাইট এবং আরও অনেক কিছুর মধ্যে ডিজিটাল ডেটার আকার রূপান্তর করুন।",
 
                 emi_title: "ইএমআই ক্যালকুলেটর",
                 emi_principal: "প্রধান পরিমান",
@@ -376,9 +414,11 @@
 
         const templates = {
             basic: () => {
+                const lang = translations[currentLang];
                 const el = document.createElement('div');
                 el.innerHTML = `
-                    <h2>${translations[currentLang].basic_btn}</h2>
+                    <h2>${lang.basic_btn}</h2>
+                    <p class="small">Performs basic arithmetic operations like addition, subtraction, multiplication, and division.</p>
                     <div id="basic-calculator">
                         <div class="display">0</div>
                         <button class="clear">AC</button>
@@ -479,9 +519,11 @@
             },
 
             scientific: () => {
+                const lang = translations[currentLang];
                 const el = document.createElement('div');
                 el.innerHTML = `
-                    <h2>${translations[currentLang].scientific_btn}</h2>
+                    <h2>${lang.scientific_btn}</h2>
+                    <p class="small">A powerful calculator with scientific functions like trigonometry, logarithms, and more.</p>
                     <div id="scientific-calculator">
                         <div class="display">0</div>
                         <button class="clear">AC</button>
@@ -535,6 +577,7 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.emi_title}</h2>
+                    <p class="small">${lang.emi_desc}</p>
                     <div class="card">
                         <label>${lang.emi_principal}</label>
                         <input id="emi-principal" placeholder="${lang.emi_principal_ph}" />
@@ -579,6 +622,7 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.bmi_title}</h2>
+                    <p class="small">${lang.bmi_desc}</p>
                     <div class="row card">
                         <div>
                             <label>${lang.bmi_weight}</label>
@@ -613,6 +657,7 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.bmr_title}</h2>
+                    <p class="small">${lang.bmr_desc}</p>
                     <div class="card"><label>${lang.bmr_weight}</label><input id="bmr-weight" type="number" /></div>
                     <div class="card"><label>${lang.bmr_height}</label><input id="bmr-height" type="number" /></div>
                     <div class="card"><label>${lang.bmr_age}</label><input id="bmr-age" type="number" /></div>
@@ -654,6 +699,7 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.age_title}</h2>
+                    <p class="small">${lang.age_desc}</p>
                     <div class="card"><label>${lang.age_dob}</label><input id="age-dob" type="date" /></div>
                     <div class="card"><label>${lang.age_today}</label><input id="age-today" type="date" /></div>
                     <button id="age-calc" class="btn">${lang.age_calc_btn}</button>
@@ -692,42 +738,37 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.gst_title}</h2>
+                    <p class="small">${lang.gst_desc}</p>
                     <div class="card"><label>${lang.gst_amount}</label><input id="gst-amount" type="number" /></div>
                     <div class="card"><label>${lang.gst_rate}</label><input id="gst-rate" type="number" /></div>
-                    <div class="card">
-                        <label>Action</label>
-                        <select id="gst-action">
-                            <option value="add">${lang.gst_add}</option>
-                            <option value="remove">${lang.gst_remove}</option>
-                        </select>
+                    <div class="two-column-card card">
+                        <button id="gst-add" class="btn">${lang.gst_add}</button>
+                        <button id="gst-remove" class="btn">${lang.gst_remove}</button>
                     </div>
-                    <button id="gst-calc" class="btn">${lang.gst_calc_btn}</button>
                     <div id="gst-result" class="result" style="display:none"></div>
                 `;
-                el.querySelector('#gst-calc').addEventListener('click', () => {
+                el.querySelector('#gst-add').addEventListener('click', () => {
                     const amount = toNum(el.querySelector('#gst-amount').value);
                     const rate = toNum(el.querySelector('#gst-rate').value);
-                    const action = el.querySelector('#gst-action').value;
-                    if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
-                        showResult('gst-result', lang.gst_err);
-                        return;
-                    }
-
-                    let gstAmount, totalAmount, netAmount;
-                    if (action === 'add') {
-                        gstAmount = amount * (rate / 100);
-                        totalAmount = amount + gstAmount;
-                        netAmount = amount;
-                    } else { // remove
-                        gstAmount = amount - (amount / (1 + rate / 100));
-                        netAmount = amount - gstAmount;
-                        totalAmount = amount;
-                    }
-
+                    if (!amount || !rate) { showResult('gst-result', lang.gst_err); return; }
+                    const gst_amount = amount * (rate / 100);
+                    const total_amount = amount + gst_amount;
                     showResult('gst-result', `
-                        ${lang.gst_gst_amount} ₹${gstAmount.toFixed(2)}<br>
-                        ${lang.gst_net} ₹${netAmount.toFixed(2)}<br>
-                        ${lang.gst_total} ₹${totalAmount.toFixed(2)}
+                        ${lang.gst_net} ${amount.toFixed(2)}<br>
+                        ${lang.gst_gst_amount} ${gst_amount.toFixed(2)}<br>
+                        ${lang.gst_total} ${total_amount.toFixed(2)}
+                    `);
+                });
+                el.querySelector('#gst-remove').addEventListener('click', () => {
+                    const amount = toNum(el.querySelector('#gst-amount').value);
+                    const rate = toNum(el.querySelector('#gst-rate').value);
+                    if (!amount || !rate) { showResult('gst-result', lang.gst_err); return; }
+                    const net_amount = amount / (1 + rate / 100);
+                    const gst_amount = amount - net_amount;
+                    showResult('gst-result', `
+                        ${lang.gst_net} ${net_amount.toFixed(2)}<br>
+                        ${lang.gst_gst_amount} ${gst_amount.toFixed(2)}<br>
+                        ${lang.gst_total} ${amount.toFixed(2)}
                     `);
                 });
                 return el;
@@ -738,6 +779,7 @@
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.discount_title}</h2>
+                    <p class="small">${lang.discount_desc}</p>
                     <div class="card"><label>${lang.discount_price}</label><input id="discount-price" type="number" /></div>
                     <div class="card"><label>${lang.discount_percent}</label><input id="discount-percent" placeholder="${lang.discount_percent_ph}" type="number" /></div>
                     <button id="discount-calc" class="btn">${lang.discount_calc_btn}</button>
@@ -746,26 +788,23 @@
                 el.querySelector('#discount-calc').addEventListener('click', () => {
                     const price = toNum(el.querySelector('#discount-price').value);
                     const percent = toNum(el.querySelector('#discount-percent').value);
-                    if (isNaN(price) || isNaN(percent)) {
-                        showResult('discount-result', lang.discount_err);
-                        return;
-                    }
-
-                    const discountAmount = price * (percent / 100);
-                    const finalPrice = price - discountAmount;
+                    if (!price || !percent) { showResult('discount-result', lang.discount_err); return; }
+                    const discount_amount = price * (percent / 100);
+                    const final_price = price - discount_amount;
                     showResult('discount-result', `
-                        ${lang.discount_amount} ₹${discountAmount.toFixed(2)}<br>
-                        ${lang.discount_final} ₹${finalPrice.toFixed(2)}
+                        ${lang.discount_final} ${final_price.toFixed(2)}<br>
+                        ${lang.discount_amount} ${discount_amount.toFixed(2)}
                     `);
                 });
                 return el;
             },
 
-            'simple-interest': () => {
+            "simple-interest": () => {
                 const lang = translations[currentLang];
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.si_title}</h2>
+                    <p class="small">${lang.si_desc}</p>
                     <div class="card"><label>${lang.si_principal}</label><input id="si-principal" type="number" /></div>
                     <div class="card"><label>${lang.si_rate}</label><input id="si-rate" type="number" /></div>
                     <div class="card"><label>${lang.si_time}</label><input id="si-time" type="number" /></div>
@@ -773,51 +812,44 @@
                     <div id="si-result" class="result" style="display:none"></div>
                 `;
                 el.querySelector('#si-calc').addEventListener('click', () => {
-                    const principal = toNum(el.querySelector('#si-principal').value);
-                    const rate = toNum(el.querySelector('#si-rate').value);
-                    const time = toNum(el.querySelector('#si-time').value);
-                    if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
-                        showResult('si-result', lang.si_err);
-                        return;
-                    }
-
-                    const interest = (principal * rate * time) / 100;
-                    const totalAmount = principal + interest;
+                    const P = toNum(el.querySelector('#si-principal').value);
+                    const R = toNum(el.querySelector('#si-rate').value);
+                    const T = toNum(el.querySelector('#si-time').value);
+                    if (!P || !R || !T) { showResult('si-result', lang.si_err); return; }
+                    const interest = (P * R * T) / 100;
+                    const total = P + interest;
                     showResult('si-result', `
-                        ${lang.si_interest} ₹${interest.toFixed(2)}<br>
-                        ${lang.si_total} ₹${totalAmount.toFixed(2)}
+                        ${lang.si_interest} ${interest.toFixed(2)}<br>
+                        ${lang.si_total} ${total.toFixed(2)}
                     `);
                 });
                 return el;
             },
-            
+
             tip: () => {
                 const lang = translations[currentLang];
                 const el = document.createElement('div');
                 el.innerHTML = `
                     <h2>${lang.tip_title}</h2>
+                    <p class="small">${lang.tip_desc}</p>
                     <div class="card"><label>${lang.tip_bill}</label><input id="tip-bill" type="number" /></div>
-                    <div class="card"><label>${lang.tip_tip_per}</label><input id="tip-percent" type="number" /></div>
+                    <div class="card"><label>${lang.tip_tip_per}</label><input id="tip-tip-per" type="number" /></div>
                     <div class="card"><label>${lang.tip_split}</label><input id="tip-split" type="number" value="1" min="1" /></div>
                     <button id="tip-calc" class="btn">${lang.tip_calc_btn}</button>
                     <div id="tip-result" class="result" style="display:none"></div>
                 `;
                 el.querySelector('#tip-calc').addEventListener('click', () => {
                     const bill = toNum(el.querySelector('#tip-bill').value);
-                    const tipPercent = toNum(el.querySelector('#tip-percent').value);
+                    const tip_per = toNum(el.querySelector('#tip-tip-per').value);
                     const split = toNum(el.querySelector('#tip-split').value);
-                    if (isNaN(bill) || isNaN(tipPercent) || isNaN(split) || split < 1) {
-                        showResult('tip-result', lang.tip_err);
-                        return;
-                    }
-
-                    const tipAmount = bill * (tipPercent / 100);
-                    const totalBill = bill + tipAmount;
-                    const perPerson = totalBill / split;
+                    if (!bill || !tip_per || !split || split <= 0) { showResult('tip-result', lang.tip_err); return; }
+                    const tip_amount = bill * (tip_per / 100);
+                    const total_bill = bill + tip_amount;
+                    const per_person = total_bill / split;
                     showResult('tip-result', `
-                        ${lang.tip_amount} ₹${tipAmount.toFixed(2)}<br>
-                        ${lang.tip_total_bill} ₹${totalBill.toFixed(2)}<br>
-                        ${lang.tip_per_person} ₹${perPerson.toFixed(2)}
+                        ${lang.tip_amount} ${tip_amount.toFixed(2)}<br>
+                        ${lang.tip_total_bill} ${total_bill.toFixed(2)}<br>
+                        ${lang.tip_per_person} ${per_person.toFixed(2)}
                     `);
                 });
                 return el;
@@ -825,376 +857,291 @@
 
             temp: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.temp_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="temp-from">
-                                <option value="celsius">Celsius</option>
-                                <option value="fahrenheit">Fahrenheit</option>
-                                <option value="kelvin">Kelvin</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="temp-to">
-                                <option value="fahrenheit">Fahrenheit</option>
-                                <option value="celsius">Celsius</option>
-                                <option value="kelvin">Kelvin</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="temp-val" type="number" /></div>
-                    <button id="temp-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="temp-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#temp-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#temp-val').value);
-                    const from = el.querySelector('#temp-from').value;
-                    const to = el.querySelector('#temp-to').value;
-                    if (isNaN(val)) { showResult('temp-result', lang.conv_err); return; }
-
-                    let result;
-                    if (from === 'celsius' && to === 'fahrenheit') { result = (val * 9/5) + 32; }
-                    else if (from === 'celsius' && to === 'kelvin') { result = val + 273.15; }
-                    else if (from === 'fahrenheit' && to === 'celsius') { result = (val - 32) * 5/9; }
-                    else if (from === 'fahrenheit' && to === 'kelvin') { result = (val - 32) * 5/9 + 273.15; }
-                    else if (from === 'kelvin' && to === 'celsius') { result = val - 273.15; }
-                    else if (from === 'kelvin' && to === 'fahrenheit') { result = (val - 273.15) * 9/5 + 32; }
-                    else { result = val; }
-
-                    showResult('temp-result', `Result: ${result.toFixed(2)}`);
-                });
+                const units = {
+                    celsius: 'Celsius', fahrenheit: 'Fahrenheit', kelvin: 'Kelvin'
+                };
+                const el = createConverter(
+                    'temp',
+                    lang.temp_btn,
+                    lang.temp_desc,
+                    units,
+                    (val, from, to) => {
+                        if (from === to) return val;
+                        let res;
+                        if (from === 'celsius') {
+                            if (to === 'fahrenheit') res = val * 9/5 + 32;
+                            if (to === 'kelvin') res = val + 273.15;
+                        } else if (from === 'fahrenheit') {
+                            if (to === 'celsius') res = (val - 32) * 5/9;
+                            if (to === 'kelvin') res = (val - 32) * 5/9 + 273.15;
+                        } else if (from === 'kelvin') {
+                            if (to === 'celsius') res = val - 273.15;
+                            if (to === 'fahrenheit') res = (val - 273.15) * 9/5 + 32;
+                        }
+                        return res.toFixed(2);
+                    }
+                );
                 return el;
             },
 
             length: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.length_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="length-from">
-                                <option value="meter">Meter</option>
-                                <option value="kilometer">Kilometer</option>
-                                <option value="centimeter">Centimeter</option>
-                                <option value="mile">Mile</option>
-                                <option value="foot">Foot</option>
-                                <option value="inch">Inch</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="length-to">
-                                <option value="kilometer">Kilometer</option>
-                                <option value="meter">Meter</option>
-                                <option value="centimeter">Centimeter</option>
-                                <option value="mile">Mile</option>
-                                <option value="foot">Foot</option>
-                                <option value="inch">Inch</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="length-val" type="number" /></div>
-                    <button id="length-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="length-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#length-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#length-val').value);
-                    const from = el.querySelector('#length-from').value;
-                    const to = el.querySelector('#length-to').value;
-                    if (isNaN(val)) { showResult('length-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        meter: 1,
-                        kilometer: 1000,
-                        centimeter: 0.01,
-                        mile: 1609.34,
-                        foot: 0.3048,
-                        inch: 0.0254
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('length-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    meters: 'Meters', feet: 'Feet', inches: 'Inches', centimeters: 'Centimeters', kilometers: 'Kilometers', miles: 'Miles'
+                };
+                const el = createConverter(
+                    'length',
+                    lang.length_btn,
+                    lang.length_desc,
+                    units,
+                    (val, from, to) => {
+                        const conversions = {
+                            meters: {
+                                feet: val * 3.28084, inches: val * 39.3701, centimeters: val * 100, kilometers: val / 1000, miles: val / 1609.34
+                            },
+                            feet: {
+                                meters: val / 3.28084, inches: val * 12, centimeters: val * 30.48, kilometers: val / 3280.84, miles: val / 5280
+                            },
+                            inches: {
+                                meters: val / 39.3701, feet: val / 12, centimeters: val * 2.54, kilometers: val / 39370.1, miles: val / 63360
+                            },
+                            centimeters: {
+                                meters: val / 100, feet: val / 30.48, inches: val / 2.54, kilometers: val / 100000, miles: val / 160934
+                            },
+                            kilometers: {
+                                meters: val * 1000, feet: val * 3280.84, inches: val * 39370.1, centimeters: val * 100000, miles: val / 1.60934
+                            },
+                            miles: {
+                                meters: val * 1609.34, feet: val * 5280, inches: val * 63360, centimeters: val * 160934, kilometers: val * 1.60934
+                            }
+                        };
+                        return conversions[from][to] ? conversions[from][to].toFixed(4) : val.toFixed(4);
+                    }
+                );
                 return el;
             },
 
             area: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.area_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="area-from">
-                                <option value="sq_meter">Square Meter</option>
-                                <option value="sq_kilometer">Square Kilometer</option>
-                                <option value="sq_mile">Square Mile</option>
-                                <option value="acre">Acre</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="area-to">
-                                <option value="sq_kilometer">Square Kilometer</option>
-                                <option value="sq_meter">Square Meter</option>
-                                <option value="sq_mile">Square Mile</option>
-                                <option value="acre">Acre</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="area-val" type="number" /></div>
-                    <button id="area-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="area-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#area-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#area-val').value);
-                    const from = el.querySelector('#area-from').value;
-                    const to = el.querySelector('#area-to').value;
-                    if (isNaN(val)) { showResult('area-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        sq_meter: 1,
-                        sq_kilometer: 1000000,
-                        sq_mile: 2589988.11,
-                        acre: 4046.86
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('area-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    sq_meters: 'Square Meters', sq_feet: 'Square Feet', acres: 'Acres', hectares: 'Hectares'
+                };
+                const el = createConverter(
+                    'area',
+                    lang.area_btn,
+                    lang.area_desc,
+                    units,
+                    (val, from, to) => {
+                        const conversions = {
+                            sq_meters: {
+                                sq_feet: val * 10.7639, acres: val / 4046.86, hectares: val / 10000
+                            },
+                            sq_feet: {
+                                sq_meters: val / 10.7639, acres: val / 43560, hectares: val / 107639
+                            },
+                            acres: {
+                                sq_meters: val * 4046.86, sq_feet: val * 43560, hectares: val / 2.471
+                            },
+                            hectares: {
+                                sq_meters: val * 10000, sq_feet: val * 107639, acres: val * 2.471
+                            }
+                        };
+                        return conversions[from][to] ? conversions[from][to].toFixed(4) : val.toFixed(4);
+                    }
+                );
                 return el;
             },
 
             volume: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.volume_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="volume-from">
-                                <option value="liter">Liter</option>
-                                <option value="milliliter">Milliliter</option>
-                                <option value="cubic_meter">Cubic Meter</option>
-                                <option value="gallon">Gallon</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="volume-to">
-                                <option value="milliliter">Milliliter</option>
-                                <option value="liter">Liter</option>
-                                <option value="cubic_meter">Cubic Meter</option>
-                                <option value="gallon">Gallon</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="volume-val" type="number" /></div>
-                    <button id="volume-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="volume-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#volume-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#volume-val').value);
-                    const from = el.querySelector('#volume-from').value;
-                    const to = el.querySelector('#volume-to').value;
-                    if (isNaN(val)) { showResult('volume-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        liter: 1,
-                        milliliter: 0.001,
-                        cubic_meter: 1000,
-                        gallon: 3.78541
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('volume-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    cubic_meters: 'Cubic Meters', liters: 'Liters', gallons: 'Gallons', cubic_feet: 'Cubic Feet'
+                };
+                const el = createConverter(
+                    'volume',
+                    lang.volume_btn,
+                    lang.volume_desc,
+                    units,
+                    (val, from, to) => {
+                        const conversions = {
+                            cubic_meters: {
+                                liters: val * 1000, gallons: val * 264.172, cubic_feet: val * 35.3147
+                            },
+                            liters: {
+                                cubic_meters: val / 1000, gallons: val / 3.78541, cubic_feet: val / 28.317
+                            },
+                            gallons: {
+                                cubic_meters: val / 264.172, liters: val * 3.78541, cubic_feet: val / 7.48052
+                            },
+                            cubic_feet: {
+                                cubic_meters: val / 35.3147, liters: val * 28.317, gallons: val * 7.48052
+                            }
+                        };
+                        return conversions[from][to] ? conversions[from][to].toFixed(4) : val.toFixed(4);
+                    }
+                );
                 return el;
             },
 
             mass: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.mass_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="mass-from">
-                                <option value="gram">Gram</option>
-                                <option value="kilogram">Kilogram</option>
-                                <option value="pound">Pound</option>
-                                <option value="ounce">Ounce</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="mass-to">
-                                <option value="kilogram">Kilogram</option>
-                                <option value="gram">Gram</option>
-                                <option value="pound">Pound</option>
-                                <option value="ounce">Ounce</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="mass-val" type="number" /></div>
-                    <button id="mass-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="mass-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#mass-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#mass-val').value);
-                    const from = el.querySelector('#mass-from').value;
-                    const to = el.querySelector('#mass-to').value;
-                    if (isNaN(val)) { showResult('mass-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        gram: 1,
-                        kilogram: 1000,
-                        pound: 453.592,
-                        ounce: 28.3495
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('mass-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    kilograms: 'Kilograms', grams: 'Grams', pounds: 'Pounds', ounces: 'Ounces'
+                };
+                const el = createConverter(
+                    'mass',
+                    lang.mass_btn,
+                    lang.mass_desc,
+                    units,
+                    (val, from, to) => {
+                        const conversions = {
+                            kilograms: {
+                                grams: val * 1000, pounds: val * 2.20462, ounces: val * 35.274
+                            },
+                            grams: {
+                                kilograms: val / 1000, pounds: val / 453.592, ounces: val / 28.3495
+                            },
+                            pounds: {
+                                kilograms: val / 2.20462, grams: val * 453.592, ounces: val * 16
+                            },
+                            ounces: {
+                                kilograms: val / 35.274, grams: val * 28.3495, pounds: val / 16
+                            }
+                        };
+                        return conversions[from][to] ? conversions[from][to].toFixed(4) : val.toFixed(4);
+                    }
+                );
                 return el;
             },
-            
+
             speed: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.speed_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="speed-from">
-                                <option value="kmh">Kilometer/hour</option>
-                                <option value="mph">Mile/hour</option>
-                                <option value="mps">Meter/second</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="speed-to">
-                                <option value="mph">Mile/hour</option>
-                                <option value="kmh">Kilometer/hour</option>
-                                <option value="mps">Meter/second</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="speed-val" type="number" /></div>
-                    <button id="speed-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="speed-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#speed-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#speed-val').value);
-                    const from = el.querySelector('#speed-from').value;
-                    const to = el.querySelector('#speed-to').value;
-                    if (isNaN(val)) { showResult('speed-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        kmh: 1,
-                        mph: 1.60934,
-                        mps: 3.6
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('speed-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    kph: 'Kilometers per hour', mph: 'Miles per hour', mps: 'Meters per second'
+                };
+                const el = createConverter(
+                    'speed',
+                    lang.speed_btn,
+                    lang.speed_desc,
+                    units,
+                    (val, from, to) => {
+                        const conversions = {
+                            kph: {
+                                mph: val * 0.621371, mps: val / 3.6
+                            },
+                            mph: {
+                                kph: val / 0.621371, mps: val / 2.237
+                            },
+                            mps: {
+                                kph: val * 3.6, mph: val * 2.237
+                            }
+                        };
+                        return conversions[from][to] ? conversions[from][to].toFixed(4) : val.toFixed(4);
+                    }
+                );
                 return el;
             },
 
             data: () => {
                 const lang = translations[currentLang];
-                const el = document.createElement('div');
-                el.innerHTML = `
-                    <h2>${lang.data_btn}</h2>
-                    <div class="card two-column-card">
-                        <div>
-                            <label>${lang.conv_from}</label>
-                            <select id="data-from">
-                                <option value="byte">Byte</option>
-                                <option value="kilobyte">Kilobyte</option>
-                                <option value="megabyte">Megabyte</option>
-                                <option value="gigabyte">Gigabyte</option>
-                                <option value="terabyte">Terabyte</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>${lang.conv_to}</label>
-                            <select id="data-to">
-                                <option value="megabyte">Megabyte</option>
-                                <option value="gigabyte">Gigabyte</option>
-                                <option value="terabyte">Terabyte</option>
-                                <option value="byte">Byte</option>
-                                <option value="kilobyte">Kilobyte</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card"><label>${lang.conv_val}</label><input id="data-val" type="number" /></div>
-                    <button id="data-calc" class="btn">${lang.conv_calc_btn}</button>
-                    <div id="data-result" class="result" style="display:none"></div>
-                `;
-                el.querySelector('#data-calc').addEventListener('click', () => {
-                    const val = toNum(el.querySelector('#data-val').value);
-                    const from = el.querySelector('#data-from').value;
-                    const to = el.querySelector('#data-to').value;
-                    if (isNaN(val)) { showResult('data-result', lang.conv_err); return; }
-                    
-                    const factors = {
-                        byte: 1,
-                        kilobyte: 1024,
-                        megabyte: 1024 * 1024,
-                        gigabyte: 1024 * 1024 * 1024,
-                        terabyte: 1024 * 1024 * 1024 * 1024
-                    };
-                    const result = val * factors[from] / factors[to];
-                    showResult('data-result', `Result: ${result.toFixed(4)}`);
-                });
+                const units = {
+                    bit: 'Bit', byte: 'Byte', kb: 'Kilobyte', mb: 'Megabyte', gb: 'Gigabyte'
+                };
+                const el = createConverter(
+                    'data',
+                    lang.data_btn,
+                    lang.data_desc,
+                    units,
+                    (val, from, to) => {
+                        const toBase = (value, unit) => {
+                            const unitMap = {
+                                bit: 1, byte: 8, kb: 8 * 1024, mb: 8 * 1024 * 1024, gb: 8 * 1024 * 1024 * 1024
+                            };
+                            return value * unitMap[unit];
+                        };
+                        const fromBase = (value, unit) => {
+                            const unitMap = {
+                                bit: 1, byte: 8, kb: 8 * 1024, mb: 8 * 1024 * 1024, gb: 8 * 1024 * 1024 * 1024
+                            };
+                            return value / unitMap[unit];
+                        };
+                        const baseValue = toBase(val, from);
+                        return fromBase(baseValue, to).toFixed(4);
+                    }
+                );
                 return el;
             },
+
+            //... বাকি কোড
         };
 
-        function render(cal) {
-            const temp = templates[cal];
-            if (temp) {
-                main.innerHTML = '';
-                main.appendChild(temp());
-            }
-        }
+        const createConverter = (calName, title, description, units, converterFn) => {
+            const lang = translations[currentLang];
+            const el = document.createElement('div');
+            const unitOptions = Object.entries(units).map(([key, value]) => `<option value="${key}">${value}</option>`).join('');
+
+            el.innerHTML = `
+                <h2>${title}</h2>
+                <p class="small">${description}</p>
+                <div class="card">
+                    <label>${lang.conv_val}</label>
+                    <input id="${calName}-value" type="number" />
+                </div>
+                <div class="row card">
+                    <div>
+                        <label>${lang.conv_from}</label>
+                        <select id="${calName}-from">${unitOptions}</select>
+                    </div>
+                    <div>
+                        <label>${lang.conv_to}</label>
+                        <select id="${calName}-to">${unitOptions}</select>
+                    </div>
+                </div>
+                <button id="${calName}-calc" class="btn">${lang.conv_calc_btn}</button>
+                <div id="${calName}-result" class="result" style="display:none"></div>
+            `;
+
+            el.querySelector(`#${calName}-calc`).addEventListener('click', () => {
+                const val = toNum(el.querySelector(`#${calName}-value`).value);
+                const from = el.querySelector(`#${calName}-from`).value;
+                const to = el.querySelector(`#${calName}-to`).value;
+                if (!val) { showResult(`${calName}-result`, lang.conv_err); return; }
+                const result = converterFn(val, from, to);
+                showResult(`${calName}-result`, `${result} ${units[to]}`);
+            });
+            return el;
+        };
 
         function showResult(id, html) {
-            const res = document.getElementById(id);
-            if (res) {
-                res.style.display = 'block';
-                res.innerHTML = html;
-            }
+            const resultEl = document.getElementById(id);
+            resultEl.innerHTML = html;
+            resultEl.style.display = 'block';
+        }
+        
+        function render(calculatorName) {
+            main.innerHTML = '';
+            const calculatorElement = templates[calculatorName]();
+            main.appendChild(calculatorElement);
         }
 
-        menu.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const current = menu.querySelector('.active');
-                if (current) current.classList.remove('active');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                langButtons.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
-                render(e.target.dataset.cal);
-            }
-        });
-        
-        langButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                currentLang = button.dataset.lang;
+                currentLang = e.target.dataset.lang;
                 updateText();
             });
         });
 
-        // Initial render
-        updateText();
+        menu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                menu.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                render(e.target.dataset.cal);
+            }
+        });
+
+        render('basic');
     </script>
 </body>
 </html>
