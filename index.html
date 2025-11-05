@@ -163,15 +163,15 @@
         }
     </style>
 
-    <meta name="description" content="CalcMate Pro - All-in-one Calculator for Basic, Scientific, EMI, BMI, BMR, Age, GST, Unit Conversions and more. Free online calculator tool.">
-    <meta name="keywords" content="calculator, online calculator, EMI calculator, BMI calculator, GST calculator, scientific calculator, free calculator, unit converter">
+    <meta name="description" content="CalcMate Pro - All-in-one Calculator for Basic, Scientific, EMI, BMI, BMR, Age, GST, SIP, Unit Conversions and more. Free online calculator tool.">
+    <meta name="keywords" content="calculator, online calculator, EMI calculator, BMI calculator, GST calculator, SIP calculator, scientific calculator, free calculator, unit converter">
     <meta name="author" content="Soumya Koley">
     <meta name="robots" content="index, follow">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
     <meta property="og:title" content="CalcMate Pro - All-in-one Calculator">
-    <meta property="og:description" content="Free web-based calculator combining Basic, Scientific, EMI, BMI, GST, BMR, Age, Discount, Unit Conversions & more.">
+    <meta property="og:description" content="Free web-based calculator combining Basic, Scientific, EMI, BMI, GST, BMR, SIP, Age, Discount, Unit Conversions & more.">
     <meta property="og:image" content="https://soumyakoley23.github.io/CalcMate-Pro/calcmatepro_preview.png">
     <meta property="og:url" content="https://soumyakoley23.github.io/CalcMate-Pro/">
     <meta name="twitter:card" content="summary_large_image">
@@ -193,7 +193,7 @@
       "url": "https://soumyakoley23.github.io/CalcMate-Pro/",
       "applicationCategory": "Calculator",
       "operatingSystem": "All",
-      "description": "All-in-one online calculator for Basic, Scientific, EMI, BMI, GST, BMR, Age, Unit Conversions and more.",
+      "description": "All-in-one online calculator for Basic, Scientific, EMI, BMI, GST, BMR, SIP, Age, Unit Conversions and more.",
       "creator": {
         "@type": "Person",
         "name": "Soumya Koley"
@@ -218,6 +218,7 @@
             <button data-cal="basic" class="active" data-text-key="basic_btn">Basic Calculator</button>
             <button data-cal="scientific" data-text-key="scientific_btn">Scientific Calculator</button>
             <button data-cal="emi" data-text-key="emi_btn">EMI Calculator</button>
+            <button data-cal="sip" data-text-key="sip_btn">SIP Calculator</button>
             <button data-cal="bmi" data-text-key="bmi_btn">BMI</button>
             <button data-cal="bmr" data-text-key="bmr_btn">BMR</button>
             <button data-cal="age" data-text-key="age_btn">Age Calculator</button>
@@ -253,6 +254,7 @@
                 basic_btn: "Basic Calculator",
                 scientific_btn: "Scientific Calculator",
                 emi_btn: "EMI Calculator",
+                sip_btn: "SIP Calculator",
                 bmi_btn: "BMI",
                 bmr_btn: "BMR",
                 age_btn: "Age Calculator",
@@ -275,6 +277,7 @@
                 basic_desc: "Perform fundamental mathematical operations like addition, subtraction, multiplication, and division.",
                 scientific_desc: "A powerful calculator with scientific functions like trigonometry, logarithms, and more.",
                 emi_desc: "Use this calculator to find out your monthly EMI, total interest, and total payable amount for a loan.",
+                sip_desc: "Calculate the future value of your Systematic Investment Plan (SIP) investments.",
                 bmi_desc: "Find your Body Mass Index (BMI) quickly and easily.",
                 bmr_desc: "Calculate your Basal Metabolic Rate (BMR) to understand your daily calorie needs.",
                 age_desc: "This calculator helps you to find your age in years, months, and days from a given date.",
@@ -290,11 +293,27 @@
                 speed_desc: "Convert speed values between kilometers per hour, miles per hour, and meters per second.",
                 data_desc: "Convert digital data sizes between bits, bytes, kilobytes, and more.",
 
+                // SIP Calculator
+                sip_title: "SIP Calculator",
+                sip_monthly: "Monthly Investment",
+                sip_monthly_ph: "e.g., 5000",
+                sip_rate: "Expected Annual Return (%)",
+                sip_rate_ph: "e.g., 12",
+                sip_period: "Investment Period (Years)",
+                sip_period_ph: "e.g., 10",
+                sip_calc_btn: "Calculate",
+                sip_err: "Please enter all inputs correctly",
+                sip_total_invested: "Total Invested Amount:",
+                sip_estimated_returns: "Estimated Returns:",
+                sip_total_value: "Total Value:",
+
                 // Blog Page Content
                 blog_title: "Explore Our Blog",
                 blog_desc: "Read our articles on various calculation tips, financial planning, and health insights to make your life easier.",
                 blog_post_emi_title: "What is EMI and How Does it Work?",
                 blog_post_emi_p: "In this article, we will discuss EMI in detail and explain its calculation method in a simple way.",
+                blog_post_sip_title: "Understanding SIP: A Smart Way to Invest",
+                blog_post_sip_p: "Learn how Systematic Investment Plans work and how they can help you build wealth over time.",
                 blog_post_bmi_title: "How to Accurately Determine Your BMI",
                 blog_post_bmi_p: "This post explains why BMI is important and what its correct calculation method is.",
                 blog_post_age_title: "Calculating Age from Date of Birth",
@@ -318,7 +337,7 @@
 
                 about_title: "The Story of CalcMate Pro",
                 about_p1: "CalcMate Pro is an online platform created with the mission to simplify and automate calculations. Our goal is to provide users with a fast, accurate, and reliable collection of calculators, making complex calculations for daily life or professional work easy.",
-                about_p2: "On this website, you will find all the necessary tools, from basic math to scientific calculations, EMI, BMI, GST/VAT, and various unit conversions. We have considered all types of users—students, professionals, and general users—to ensure everyone can easily find the solution they need.",
+                about_p2: "On this website, you will find all the necessary tools, from basic math to scientific calculations, EMI, SIP, BMI, GST/VAT, and various unit conversions. We have considered all types of users—students, professionals, and general users—to ensure everyone can easily find the solution they need.",
                 about_p3: "The CalcMate Pro project is created and maintained by <strong>Soumya Koley</strong>. We are constantly striving to add new features and improve the user experience. Your feedback is extremely important to us, as it helps us make the website even better.",
                 about_p4: "Thank you for being with us!",
 
@@ -425,6 +444,7 @@
                 basic_btn: "সাধারণ ক্যালকুলেটর",
                 scientific_btn: "বৈজ্ঞানিক ক্যালকুলেটর",
                 emi_btn: "ইএমআই ক্যালকুলেটর",
+                sip_btn: "এসআইপি ক্যালকুলেটর",
                 bmi_btn: "বিএমআই",
                 bmr_btn: "বিএমআর",
                 age_btn: "বয়স ক্যালকুলেটর",
@@ -447,6 +467,7 @@
                 basic_desc: "যোগ,বিয়োগ,গুণ এবং ভাগের মতো মৌলিক গাণিতিক ক্রিয়াকলাপ সম্পাদন করুন।",
                 scientific_desc: "ত্রিকোণমিতি, লগারিদম এবং আরও অনেক কিছুর মতো বৈজ্ঞানিক ফাংশন সহ একটি শক্তিশালী ক্যালকুলেটর।",
                 emi_desc: "এই ক্যালকুলেটরটি ব্যবহার করে আপনার ঋণের মাসিক EMI, মোট সুদ, এবং মোট প্রদেয় পরিমাণ নির্ণয় করুন।",
+                sip_desc: "আপনার সিস্টেমেটিক ইনভেস্টমেন্ট প্ল্যান (SIP) বিনিয়োগের ভবিষ্যত মূল্য গণনা করুন।",
                 bmi_desc: "আপনার বডি মাস ইনডেক্স (BMI) সহজে এবং দ্রুত নির্ণয় করুন।",
                 bmr_desc: "আপনার দৈনিক ক্যালরির চাহিদা বোঝার জন্য বেসাল মেটাবলিক রেট (BMR) গণনা করুন।",
                 age_desc: "এই ক্যালকুলেটরটি আপনাকে একটি নির্দিষ্ট তারিখ থেকে আপনার বয়স বছর, মাস এবং দিনে খুঁজে বের করতে সাহায্য করে।",
@@ -462,11 +483,27 @@
                 speed_desc: "কিলোমিটার প্রতি ঘন্টা, মাইল প্রতি ঘন্টা এবং মিটার প্রতি সেকেন্ডের মধ্যে গতির মান রূপান্তর করুন।",
                 data_desc: "বিট, বাইট, কিলোবাইট এবং আরও অনেক কিছুর মধ্যে ডিজিটাল ডেটার আকার রূপান্তর করুন।",
 
+                // SIP Calculator
+                sip_title: "এসআইপি ক্যালকুলেটর",
+                sip_monthly: "মাসিক বিনিয়োগ",
+                sip_monthly_ph: "উদাহরণ: 5000",
+                sip_rate: "প্রত্যাশিত বার্ষিক রিটার্ন (%)",
+                sip_rate_ph: "উদাহরণ: 12",
+                sip_period: "বিনিয়োগের সময়কাল (বছর)",
+                sip_period_ph: "উদাহরণ: 10",
+                sip_calc_btn: "হিসাব করুন",
+                sip_err: "সব ইনপুট সঠিকভাবে দিন",
+                sip_total_invested: "মোট বিনিয়োগকৃত পরিমাণ:",
+                sip_estimated_returns: "আনুমানিক রিটার্ন:",
+                sip_total_value: "মোট মূল্য:",
+
                 // Blog Page Content
                 blog_title: "আমাদের ব্লগ পড়ুন",
                 blog_desc: "আমাদের বিভিন্ন ক্যালকুলেশন টিপস, আর্থিক পরিকল্পনা এবং স্বাস্থ্য সম্পর্কিত নিবন্ধগুলি পড়ুন।",
                 blog_post_emi_title: "EMI কি এবং কীভাবে কাজ করে?",
                 blog_post_emi_p: "এই আর্টিকেলে আমরা EMI-এর বিস্তারিত আলোচনা করব এবং এর গণনা পদ্ধতি সহজভাবে বোঝাব।",
+                blog_post_sip_title: "এসআইপি বোঝা: বিনিয়োগের একটি স্মার্ট উপায়",
+                blog_post_sip_p: "জানুন কিভাবে সিস্টেমেটিক ইনভেস্টমেন্ট প্ল্যান কাজ করে এবং কিভাবে তারা সময়ের সাথে আপনার সম্পদ গড়ে তুলতে সাহায্য করতে পারে।",
                 blog_post_bmi_title: "আপনার BMI সঠিকভাবে নির্ণয়ের উপায়",
                 blog_post_bmi_p: "BMI কেন গুরুত্বপূর্ণ এবং এর সঠিক গণনা পদ্ধতি কী, তা এই পোস্টে তুলে ধরা হয়েছে।",
                 blog_post_age_title: "বয়স ক্যালকুলেটরের মাধ্যমে জন্ম তারিখের হিসাব",
@@ -490,7 +527,7 @@
 
                 about_title: "ক্যালকমেট প্রো-এর গল্প",
                 about_p1: "ক্যালকমেট প্রো একটি অনলাইন প্ল্যাটফর্ম, যা গণনার কাজগুলোকে সহজ ও স্বয়ংক্রিয় করার উদ্দেশ্যে তৈরি করা হয়েছে। আমাদের লক্ষ্য হলো ব্যবহারকারীদের জন্য একটি দ্রুত, নির্ভুল এবং নির্ভরযোগ্য ক্যালকুলেটরের সংগ্রহ তৈরি করা, যাতে দৈনন্দিন জীবনে বা পেশাগত কাজে জটিল হিসাব-নিকাশ সহজ হয়ে যায়।",
-                about_p2: "এই ওয়েবসাইটে আপনি সাধারণ গণিত থেকে শুরু করে বৈজ্ঞানিক হিসাব, ইএমআই, বিএমআই, জিএসটি/ভ্যাট এবং বিভিন্ন এককের রূপান্তরের জন্য প্রয়োজনীয় সমস্ত টুল খুঁজে পাবেন। আমরা সব ধরনের ব্যবহারকারীর কথা মাথায় রেখেছি—শিক্ষার্থী, পেশাজীবী বা সাধারণ মানুষ—যাতে সবাই সহজেই তাদের প্রয়োজন অনুযায়ী সমাধান খুঁজে নিতে পারে।",
+                about_p2: "এই ওয়েবসাইটে আপনি সাধারণ গণিত থেকে শুরু করে বৈজ্ঞানিক হিসাব, ইএমআই, এসআইপি, বিএমআই, জিএসটি/ভ্যাট এবং বিভিন্ন এককের রূপান্তরের জন্য প্রয়োজনীয় সমস্ত টুল খুঁজে পাবেন। আমরা সব ধরনের ব্যবহারকারীর কথা মাথায় রেখেছি—শিক্ষার্থী, পেশাজীবী বা সাধারণ মানুষ—যাতে সবাই সহজেই তাদের প্রয়োজন অনুযায়ী সমাধান খুঁজে নিতে পারে।",
                 about_p3: "ক্যালকমেট প্রো প্রজেক্টটি <strong>সৌম্য কোলে</strong> দ্বারা তৈরি এবং রক্ষণাবেক্ষণ করা হয়। আমরা নিরন্তর চেষ্টা করি নতুন ফিচার যোগ করতে এবং ব্যবহারকারীর অভিজ্ঞতা উন্নত করতে। আপনার মতামত আমাদের কাছে অত্যন্ত গুরুত্বপূর্ণ, কারণ এটি আমাদের ওয়েবসাইটকে আরও উন্নত করতে সাহায্য করে।",
                 about_p4: "আমাদের সাথে থাকার জন্য ধন্যবাদ!",
                 
@@ -893,6 +930,58 @@
                         ${lang.emi_monthly} ₹${E.toFixed(2)}<br>
                         ${lang.emi_total} ₹${total.toFixed(2)}<br>
                         ${lang.emi_interest} ₹${interest.toFixed(2)}
+                    `);
+                });
+                return el;
+            },
+
+            sip: () => {
+                const lang = translations[currentLang];
+                const el = document.createElement('div');
+                el.innerHTML = `
+                    <h2>${lang.sip_title}</h2>
+                    <p class="small">${lang.sip_desc}</p>
+                    <div class="card">
+                        <label>${lang.sip_monthly}</label>
+                        <input id="sip-monthly" placeholder="${lang.sip_monthly_ph}" />
+                    </div>
+                    <div class="row card">
+                        <div>
+                            <label>${lang.sip_rate}</label>
+                            <input id="sip-rate" placeholder="${lang.sip_rate_ph}" />
+                        </div>
+                        <div>
+                            <label>${lang.sip_period}</label>
+                            <input id="sip-period" placeholder="${lang.sip_period_ph}" />
+                        </div>
+                    </div>
+                    <button id="sip-calc" class="btn">${lang.sip_calc_btn}</button>
+                    <div id="sip-result" class="result" style="display:none"></div>
+                `;
+                el.querySelector('#sip-calc').addEventListener('click', () => {
+                    const monthly = toNum(el.querySelector('#sip-monthly').value);
+                    const rate = toNum(el.querySelector('#sip-rate').value);
+                    const period = toNum(el.querySelector('#sip-period').value);
+                    
+                    if (!monthly || !rate || !period || period <= 0) {
+                        showResult('sip-result', lang.sip_err);
+                        return;
+                    }
+                    
+                    // SIP calculation formula
+                    const monthlyRate = rate / 100 / 12;
+                    const months = period * 12;
+                    
+                    // Future value of SIP formula
+                    const futureValue = monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+                    
+                    const totalInvested = monthly * months;
+                    const estimatedReturns = futureValue - totalInvested;
+                    
+                    showResult('sip-result', `
+                        ${lang.sip_total_invested} ₹${totalInvested.toFixed(2)}<br>
+                        ${lang.sip_estimated_returns} ₹${estimatedReturns.toFixed(2)}<br>
+                        ${lang.sip_total_value} ₹${futureValue.toFixed(2)}
                     `);
                 });
                 return el;
@@ -1364,6 +1453,10 @@
                     <div class="card blog-post">
                         <h3><a href="#">${lang.blog_post_emi_title}</a></h3>
                         <p>${lang.blog_post_emi_p}</p>
+                    </div>
+                    <div class="card blog-post">
+                        <h3><a href="#">${lang.blog_post_sip_title}</a></h3>
+                        <p>${lang.blog_post_sip_p}</p>
                     </div>
                     <div class="card blog-post">
                         <h3><a href="#">${lang.blog_post_bmi_title}</a></h3>
